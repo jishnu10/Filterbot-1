@@ -60,7 +60,7 @@ if ENV:
     START_PHOTTO = os.environ.get("START_PHOTTO", 'https://telegra.ph/file/7703ef03a791f158e28db.jpg')
     STRICT_GMUTE = bool(os.environ.get('STRICT_GMUTE', False))
     OWNER_NAME = os.environ.get("OWNER_NAME", None)
-
+    GROUP_NAME = os.environ.get("GROUP_NAME", None)
 else:
     from tg_bot.config import Development as Config
     TOKEN = Config.API_KEY
