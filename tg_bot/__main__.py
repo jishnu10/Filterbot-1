@@ -10,7 +10,7 @@ from telegram.ext.dispatcher import run_async, DispatcherHandlerStop
 from telegram.utils.helpers import escape_markdown
 
 from tg_bot import dispatcher, updater, TOKEN, WEBHOOK, OWNER_ID, DONATION_LINK, CERT_PATH, PORT, URL, LOGGER, \
-    ALLOW_EXCL, START_PHOTTO, OWNER_NAME, OWNER_USERNAME, GROUP_NAME 
+    ALLOW_EXCL, START_PHOTTO, OWNER_NAME, OWNER_USERNAME, GROUP_NAME, SUPPORT_CHAT
 # needed to dynamically load modules
 # NOTE: Module order is not guaranteed, specify that in the config file!
 from tg_bot.modules import ALL_MODULES
@@ -129,7 +129,7 @@ def start(bot: Bot, update: Update, args: List[str]):
             first_name = update.effective_user.first_name
             update.effective_message.reply_photo(DEVIL_IMG,PM_START_TEXT.format(escape_markdown(first_name), escape_markdown(bot.first_name), OWNER_NAME, OWNER_USERNAME ),reply_markup=InlineKeyboardMarkup(
                                                 [[InlineKeyboardButton(text="📞Help",url="t.me/{}?start=help".format(bot.username)),InlineKeyboardButton(text=" 👥 channel.",url="https://telegram.dog/{GROUP_NAME}")],  
-                                                [InlineKeyboardButton(text="Creater",url="https://t.me/{@{GROUP_NAME}}"),InlineKeyboardButton(text="Mai Source",url="https://t.me/@{GROUP_NAME}")]]),disable_web_page_preview=True, parse_mode=ParseMode.MARKDOWN)
+                                                [InlineKeyboardButton(text="👥 Support Group",url=f"https://t.me/{SUPPORT_CHAT}"),InlineKeyboardButton(text="Mai Source",url="https://t.me/@{GROUP_NAME}")]]),disable_web_page_preview=True, parse_mode=ParseMode.MARKDOWN)
     else:
          
 
