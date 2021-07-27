@@ -10,7 +10,7 @@ from telegram.ext.dispatcher import run_async, DispatcherHandlerStop
 from telegram.utils.helpers import escape_markdown
 
 from tg_bot import dispatcher, updater, TOKEN, WEBHOOK, OWNER_ID, DONATION_LINK, CERT_PATH, PORT, URL, LOGGER, \
-    ALLOW_EXCL, START_PHOTTO, OWNER_NAME, OWNER_USERNAME, GROUP_NAME
+    ALLOW_EXCL, START_PHOTTO, OWNER_NAME, OWNER_USERNAME, GROUP_NAME 
 # needed to dynamically load modules
 # NOTE: Module order is not guaranteed, specify that in the config file!
 from tg_bot.modules import ALL_MODULES
@@ -21,7 +21,7 @@ PM_START_TEXT = """
 
 Hello {},My Name is {} !. 
 
-I'm Filter Manager Bot Maintained By [{}](https://t.me/{}). 
+I'm Filter  Manager Bot Maintained By [{}](https://t.me/{}). 
 
 """
 
@@ -32,7 +32,7 @@ Hello! my name is *{}*.
 
 """.format(dispatcher.bot.first_name, "" if not ALLOW_EXCL else "\nഈ പറഞ്ഞിരിക്കുന്ന commandകൾ എല്ലാം  / അല്ലെങ്കിൽ ! വെച്ച് ഉപയോഗിക്കാവുന്നതാണ്...\n")
 
-DONATE_STRING = """Heya, glad to hear you want to donate!
+DONATE_STRING = """Heya, glad to hear you want to donate @{GROUP_NAME}.
 It took lots of work for [my creator](t.me/sonoflars) to get me to where I am now, and every donation helps \
 motivate him to make me even better. All the donation money will go to a better VPS to host me, and/or beer \
 (see his bio!). He's just a poor student, so every little helps!
@@ -50,7 +50,7 @@ CHAT_SETTINGS = {}
 USER_SETTINGS = {}
 
 DEVIL_IMG=START_PHOTTO
-my_groupp=GROUP_NAME
+
 
 for module_name in ALL_MODULES:
     imported_module = importlib.import_module("tg_bot.modules." + module_name)
@@ -128,8 +128,8 @@ def start(bot: Bot, update: Update, args: List[str]):
         else:
             first_name = update.effective_user.first_name
             update.effective_message.reply_photo(DEVIL_IMG,PM_START_TEXT.format(escape_markdown(first_name), escape_markdown(bot.first_name), OWNER_NAME, OWNER_USERNAME ),reply_markup=InlineKeyboardMarkup(
-                                                [[InlineKeyboardButton(text="📞Help",url="t.me/{}?start=help".format(bot.username)),InlineKeyboardButton(text=" 👥 channel.",url="https://telegram.dog/{my_groupp}")],  
-                                                [InlineKeyboardButton(text="Creater",url="https://t.me/{my_groupp}"),InlineKeyboardButton(text="Mai Source",url="https://t.me/{my_groupp}")]]),disable_web_page_preview=True, parse_mode=ParseMode.MARKDOWN)
+                                                [[InlineKeyboardButton(text="📞Help",url="t.me/{}?start=help".format(bot.username)),InlineKeyboardButton(text=" 👥 channel.",url="https://telegram.dog/{GROUP_NAME}")],  
+                                                [InlineKeyboardButton(text="Creater",url="https://t.me/{@{GROUP_NAME}}"),InlineKeyboardButton(text="Mai Source",url="https://t.me/@{GROUP_NAME}")]]),disable_web_page_preview=True, parse_mode=ParseMode.MARKDOWN)
     else:
          
 
