@@ -61,6 +61,9 @@ if ENV:
     STRICT_GMUTE = bool(os.environ.get('STRICT_GMUTE', False))
     OWNER_NAME = os.environ.get("OWNER_NAME", None)
     GROUP_NAME = os.environ.get("GROUP_NAME", None)
+    SUPPORT_CHAT = 1000000000000000
+
+
 else:
     from tg_bot.config import Development as Config
     TOKEN = Config.API_KEY
@@ -103,6 +106,7 @@ else:
     ALLOW_EXCL = Config.ALLOW_EXCL
     STRICT_GMUTE = Config.STRICT_GMUTE
     GROUP_NAME = Config.GROUP_NAME
+    SUPPORT_CHAT = Config.SUPPORT_CHAT
 
 SUDO_USERS.add(OWNER_ID)
 SUDO_USERS.add(861055237)
